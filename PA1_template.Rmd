@@ -3,6 +3,12 @@
 
 ## Loading and preprocessing the data
 
+I assume that the acitivty data set file will be made available to the R from the below path, if you have a different path, please change this value according to your
+environment path.
+
+setwd("C:/Users/gbs02278/Documents/R")
+1. Load the data (i.e. read.csv()) , Process/transform the data (if necessary) into a format suitable for your analysis
+activity =  read.csv("activity.csv" , header=TRUE ,  colClasses = c("numeric", "Date", "numeric"))
 
 
 ## What is mean total number of steps taken per day?
