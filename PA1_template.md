@@ -183,9 +183,9 @@ avgStepsByIntervalInWeekEnds$type = "weekend"
 
 # Create a new dataset that contains the mean steps by date and type.
 activityAvgDataSetByWeek <- rbind(avgStepsByIntervalInWeekDays , avgStepsByIntervalInWeekEnds)
-colnames(activityAvgDataSetByWeek) <- c("date" , "mean" , "type")
+colnames(activityAvgDataSetByWeek) <- c("interval" , "steps" , "type")
 
-ggplot(activityAvgDataSetByWeek, aes(date, mean)) + geom_line()  + facet_grid( type ~ .)
+ggplot(activityAvgDataSetByWeek, aes(interval, steps)) + geom_line()  + facet_grid( type ~ .)
 ```
 
 ![plot of chunk unnamed-chunk-14](figure/unnamed-chunk-14.png) 
