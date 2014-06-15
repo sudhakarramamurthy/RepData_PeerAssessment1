@@ -149,3 +149,44 @@ median(totalStepsTakenPerDayWithActivityNew$steps , na.rm = TRUE)
 ## [1] 10766
 ```
 
+### What is the impact of imputing missing data on the estimates of the total daily number of steps?
+
+**As you can see impact of imputing missing data on the estimates is very low atleast in the total daily number of steps**
+
+
+## 5. Are there differences in activity patterns between weekdays and weekends?
+
+
+```r
+library(ggplot2)
+# Compute a vector of days
+days <- weekdays(as.Date(activity$date , format='%Y-%m-%d'))
+# add this column to the activity dataset
+activity$days <- days
+# Create a data set of weekdays
+activityWeekDays <- subset(activity , activity$days!="Saturday" & activity$days != "Sunday")
+# Find the average steps by interval in weekday
+avgStepsByIntervalInWeekDays = aggregate(activityWeekDays$steps, by=list(activityWeekDays$interval), mean, na.rm=TRUE)
+colnames(avgStepsByIntervalInWeekDays) <- c("interval","steps")
+# Add a new column called type and set the value as "weekday"
+avgStepsByIntervalInWeekDays$type = "weekday"
+
+
+
+# Create a data set of weekends
+activityWeekends <- subset(activity , activity$days=="Saturday" | activity$days == "Sunday")
+# Find the average steps by interval on activityWeekend data set
+avgStepsByIntervalInWeekEnds = aggregate(activityWeekends$steps, by=list(activityWeekends$interval), mean, na.rm=TRUE)
+colnames(avgStepsByIntervalInWeekEnds) <- c("interval","steps")
+# Add a new column type and set the value as "weekend"
+avgStepsByIntervalInWeekEnds$type = "weekend"
+
+# Create a new dataset that contains the mean steps by date and type.
+activityAvgDataSetByWeek <- rbind(avgStepsByIntervalInWeekDays , avgStepsByIntervalInWeekEnds)
+colnames(activityAvgDataSetByWeek) <- c("date" , "mean" , "type")
+
+ggplot(activityAvgDataSetByWeek, aes(date, mean)) + geom_line()  + facet_grid( type ~ .)
+```
+
+![plot of chunk unnamed-chunk-14](figure/unnamed-chunk-14.png) 
+
