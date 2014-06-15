@@ -270,10 +270,10 @@ activityNew$steps = ifelse(is.na(activityNew$steps), activityNew$steps.mean, act
 <p>I reconfirm now that the data set activity now does not have any NA values</p>
 
 <pre><code class="r"># this should now return me a 0
-sum(is.na(activity))
+sum(is.na(activityNew))
 </code></pre>
 
-<pre><code>## [1] 2304
+<pre><code>## [1] 0
 </code></pre>
 
 <h3>Make a histogram of the total number of steps taken each day and Calculate and report the mean and median total number of steps taken per day.</h3>

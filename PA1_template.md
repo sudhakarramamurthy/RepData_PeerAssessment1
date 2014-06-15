@@ -109,11 +109,11 @@ I reconfirm now that the data set activity now does not have any NA values
 
 ```r
 # this should now return me a 0
-sum(is.na(activity))
+sum(is.na(activityNew))
 ```
 
 ```
-## [1] 2304
+## [1] 0
 ```
 
 ### Make a histogram of the total number of steps taken each day and Calculate and report the mean and median total number of steps taken per day.
